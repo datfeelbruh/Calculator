@@ -15,12 +15,10 @@ public class Validation {
    }
    // проверка на римское число
     public boolean isRoman(String str){
-       boolean exists = true;
         try {
             Romans.valueOf(str);
         } catch (IllegalArgumentException e) {
-            exists = false;
-            return exists;
+            return false;
         }
         return true;
     }
