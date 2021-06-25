@@ -37,15 +37,9 @@ public class Calc {
         if (validation.isArabic(expItems[0]) && validation.isArabic(expItems[2])) {
             num1 = Integer.parseInt(expItems[0]);
             num2 = Integer.parseInt(expItems[2]);
-          //  if (num1 == 0 || num2 == 0) {
-             //   throw new CalcException("Введите число от 1 до 10");
-          //  }
         } else if (validation.isRoman(expItems[0]) && validation.isRoman(expItems[2])) {
             num1 = validation.romanToArabic(expItems[0]);
             num2 = validation.romanToArabic(expItems[2]);
-           // if (num1 == 0 || num2 == 0) {
-              //  throw new CalcException("Введите число от 1 до 10");
-           // }
             isRomanExp = true;
         } else {
             throw new CalcException("Числа должны быть целыми.\nЧисла должны быть оба римские или оба арабские.\nРимские числа должны быть в верхнем регистре");
