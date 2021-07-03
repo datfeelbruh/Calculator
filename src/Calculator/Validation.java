@@ -16,7 +16,7 @@ public class Validation {
    // проверка на римское число
     public boolean isRoman(String str){
         try {
-            Romans.valueOf(str);
+            romanToArabic(str);
         } catch (IllegalArgumentException e) {
             return false;
         }
@@ -24,10 +24,16 @@ public class Validation {
     }
     // конвертация из римского в арабское (I...X)
     public Integer romanToArabic(String str){
-       if(isRoman(str)) {
-           return Romans.valueOf(str).weight;
-        }
-       return null;
+       int result = 0;
+       for(int i = 0; i < str.length() - 1; i++) {
+           if (Romans.valueOf(String.valueOf(str.charAt(i))).weight < Romans.valueOf(String.valueOf(str.charAt(i + 1))).weight) {
+               result -= Romans.valueOf(String.valueOf(str.charAt(i))).weight;
+           } else {
+               result += Romans.valueOf(String.valueOf(str.charAt(i))).weight;
+           }
+       }
+       result += Romans.valueOf(String.valueOf(str.charAt(str.length() - 1))).weight;
+       return result;
     }
     //Конвертация из арабского в римское (1...100)
     public String arabicToRoman(Integer num){
